@@ -32,6 +32,7 @@
 
         <v-card-actions>
           <v-btn
+            :to="'/albums?userId=' + user.id"
             color="orange lighten-2"
             text
           >
@@ -62,14 +63,14 @@
 
 export default {
 
-async asyncData({ $axios, error }) {
+  async asyncData({ $axios, error }) {
 
-    try {
-      const response = await $axios.get('https://jsonplaceholder.typicode.com/users')
+      try {
 
+      const { data } = await $axios.get('https://jsonplaceholder.typicode.com/users')
 
       return {
-        users: response.data
+        users: data
       }
 
     } catch(e) {
@@ -77,7 +78,7 @@ async asyncData({ $axios, error }) {
         // If API is down
         error({
           statusCode: 503,
-          message: 'Unable to fetch API. Try a bit later. Thanks. ;)'
+          message: 'Unable to fetch API. Try a bit later. Thank you ;)'
         })
       }
 
@@ -85,7 +86,8 @@ async asyncData({ $axios, error }) {
 
   data() {
     return {
-      usersNumber: 0
+      usersNumber: 0,
+      apiUrl: "https://jsonplaceholder.typicode.com"
     }
   },
   head() {
