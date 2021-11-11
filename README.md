@@ -1,6 +1,16 @@
 # Gallery with Vue/Nuxt/Vuetify/Axios
 
+Why Nuxt.js - to simplify routing, passing SEO info
+
 It uses public testing API for the calls.
+
+WIP (0_1)
+
+TODO: 
+- Users screen - scolling grid - avaliable users on the system - each cell - Username, name and random photo from their album
+- Album screen - scrolling list of available albums - Album title and some random photo from the album
+- Photo screen - scrolling grid list of photos - titled overlayed
+- Photo screen - single - description on the bottom, details view and close button - details view can be shown or hidden by clicking on the image- (title of the image, album title, name of the user who created it.)
 
 ## Build Setup
 
