@@ -1,4 +1,6 @@
-# gallery-nuxt
+# Gallery with Vue/Nuxt/Vuetify/Axios
+
+It uses public testing API for the calls.
 
 ## Build Setup
 
