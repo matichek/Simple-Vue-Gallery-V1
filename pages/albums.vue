@@ -2,6 +2,8 @@
 
   <div>
     <!-- https://jsonplaceholder.typicode.com/albums?userId=1 -->
+    <!-- https://jsonplaceholder.typicode.com/photos?albumId=1 -->
+    <!-- https://jsonplaceholder.typicode.com/photos?albumId=1?url[0] -->
   <v-container>
     <h1>Album page</h1>
 
@@ -38,7 +40,7 @@
                     color="#036358"
                   >
                     <v-btn
-                      :to="'/albums?userId=' + single.id + '/'"
+                      :to="'/photos?albumId=' + single.id + '/'"
                     >See all pictures</v-btn>
                   </v-overlay>
                 </v-fade-transition>
