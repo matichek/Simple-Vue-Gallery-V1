@@ -126,6 +126,11 @@ export default {
           icon: 'mdi-apps',
           title: 'Dashboard',
           to: '/dashboard'
+        },
+        {
+          icon: 'mdi-apps',
+          title: 'Testing sandbox',
+          to: '/testing'
         }
       ],
       miniVariant: false,

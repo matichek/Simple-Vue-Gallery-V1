@@ -24,8 +24,9 @@
                 class="mx-auto"
                 max-width="344"
               >
+
                 <v-img
-                  src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+
                   height="200px"
                 ></v-img>
 
@@ -67,10 +68,17 @@ export default {
 
     // Call for all albums for user ID
 
-    const { data } = await $axios.get('https://jsonplaceholder.typicode.com/albums?userId=' + query.userId)
+    const { data } = await $axios.get('https://jsonplaceholder.typicode.com/albums?userId=' + query.userId);
+
+    // Get image
+    // const {dataAlbum} = await $axios.get('https://jsonplaceholder.typicode.com/albums/'+query.userId+'/photos');
+
+    // We take first image from object
+    // const album2 = dataAlbum.data;
 
     return {
       user: data
+
     }
 
     } catch(e) {
@@ -86,7 +94,8 @@ export default {
 
   data() {
     return {
-      par: 0
+      par: 0,
+      url: null
     }
   },
 

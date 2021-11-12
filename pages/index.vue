@@ -8,7 +8,7 @@
 
   <v-row>
     <v-col
-      v-for="(user, index) in users" :key="index"
+      v-for="user in users" :key="user.id"
       xl="2"
       lg="3"
       md="4"
@@ -18,12 +18,8 @@
         class="mx-auto"
         max-width="344"
       >
-
-        <v-img
-          src="https://www.google.com"
-          height="200px"
-        ></v-img>
-
+      <p></p>
+      <v-img height="200"></v-img>
 
         <v-card-title>
           {{user.name}}
@@ -31,14 +27,6 @@
 
         <v-card-subtitle>
           {{user.username}}
-        <br>
-          Album url test static:
-        {{album[0].url}}
-
-        <br>
-          Album url test test:
-        <strong>{{album[0].url}}</strong>
-        <!--<strong>{{dataAlbumF(`${user.id}`)[0].url}}</strong>-->
         </v-card-subtitle>
 
         <v-card-actions>
@@ -58,45 +46,19 @@
     </v-col>
   </v-row>
 
-  <div v-if="users.length">
-    <span>{{users.length}}</span>
-  </div>
-  <div>
-  {{users}}
-  </div>
 
-  <h2>Test2</h2>
 
 
   <h3>Get first url from https://jsonplaceholder.typicode.com/albums/1/photos</h3>
-  {{album[0].url}}
 
-  <h3>Dynmic function for albums?</h3>
-
-
+  <h3>Test 3</h3>
 
 </v-container>
 </template>
 
 <script>
 
-/* Example of SEO info */
-
 export default {
-
-/*   let getall = async() => {
-
-      const res = await axios.get(`https://jsonplaceholder.typicode.com/users`);
-      const users = res.data;
-
-
-
-      const res2 = await axios.get(`https://jsonplaceholder.typicode.com/photos?albumId`);
-
-      const albums = res2.data;
-
-      return albums, users
-  }, */
 
   async asyncData({ $axios, error }) {
 
@@ -104,15 +66,12 @@ export default {
           const data = await $axios.get('https://jsonplaceholder.typicode.com/users');
           const users = data.data;
 
-          const dataAlbum = await $axios.get(`https://jsonplaceholder.typicode.com/albums/1/photos`);
-          const album = dataAlbum.data;
+          // const userId = 1;
+          // const dataAlbum = await $axios.get('https://jsonplaceholder.typicode.com/albums/'+userId+'/photos');
+          // const album = dataAlbum.data;
+          // const albumPictureUrl = album[0].url;
 
-          return {users, album};
-
-/*           return {
-            users: data,
-            album: dataAlbum
-         } */
+          return {users};
 
     } catch(e) {
 
@@ -124,13 +83,20 @@ export default {
       }
 
   },
+
+  // Idea - make anohter async asyncData2 function and make const
+
   data() {
     return {
       usersNumber: 0,
       apiUrl: "https://jsonplaceholder.typicode.com",
-      album2: []
+      userId: "",
+      users: []
     }
   },
+
+  /* Example of SEO info */
+
   head() {
     return {
       title: 'Matijas Gallery Test with Nuxt.js',
@@ -142,7 +108,21 @@ export default {
         }
       ]
     }
-  }
-}
+  }, method: {
+    getImage(id) {
 
+      const getImage2 = this.$axios.get('https://jsonplaceholder.typicode.com/albums/'+id+'/photos').data
+
+      return getImage2
+
+       /*  this.photos = this.$axios.get('https://jsonplaceholder.typicode.com/albums/'+id+'/photos');
+        this.photosUrl = this.photos.data.url;
+        return this.photosUrl; */
+
+    }
+
+
+  }
+
+}
 </script>
