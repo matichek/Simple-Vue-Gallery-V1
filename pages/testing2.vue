@@ -2,6 +2,9 @@
 <div>
 <v-container>
 
+<h1>Random number</h1>
+{{randomNumber}}
+
 <h1>Is new var loading?</h1>
 {{mergedObject}}
 
@@ -62,7 +65,7 @@
 </template>
 
 <script>
-
+import _ from 'lodash';
 
 export default {
 
@@ -75,6 +78,7 @@ export default {
       albumsArrayPrepared: [],
       usersArrayPrepared: [],
       mergedObject: [],
+      randomNumber: null,
 
 
       arr1: [
@@ -153,12 +157,36 @@ export default {
 
         });
 
-        this.mergedObject = this.usersArrayPrepared.map(v => ({ ...v, ...this.albumsArrayPrepared.find(sp => sp.userId === v.userId) }));
+        this.randomNumber = _.random(1,10)
+
+
+
+        // this.mergedObject = this.usersArrayPrepared.map(v => ({ ...v, ...this.albumsArrayPrepared.find(sp => sp.userId === v.userId) }));
+
+        // this.mergedObject = _.merge(this.usersArrayPrepared, this.albumsArrayPrepared)
+
+        this.mergedObject =  _(this.albumsArrayPrepared)
+          .groupBy('userId')
+          .map((values, key) => {
+            if (values.length === 1) {
+              values[0].album_id = [values[0].albumd_id];
+              return values[0];
+            }
+            return _.mergeWith(...values, this.customizer);
+          })
+          .value();
 
 
 
 
       })
+    },
+
+    customizer(objValue, srcValue, key, fourth) {
+      if (key === 'server') {
+        if (!_.isArray(objValue)) objValue = [objValue];
+        return objValue.concat(srcValue);
+      }
     },
     prepareAlbums() {
 
