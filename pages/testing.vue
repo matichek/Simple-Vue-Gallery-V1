@@ -19,6 +19,19 @@
 <!--{{album1}}-->
 {{getTest(1)}}
 
+
+<h3>Test async22222222222222222222</h3>
+
+
+<div v-for="(i,index) in arrayOne" :key="index">
+
+<li>i.name</li>
+
+</div>
+
+{{array1}}
+
+
 </v-container>
 
 </div>
@@ -37,18 +50,20 @@ export default {
       users1: [],
       album1: [],
       albumfull: [],
-      data2: null
+      data2: null,
+      arrayOne: [],
+      arrayTwo: [],
+      array1: []
     }
-  }, computed: {
-
-
-
   },
 
   async created() {
+
     await this.getUsers()
    /*  await this.getUsersList()
     await this.getAlbumsList() */
+
+  }, beforeMount() {
 
   },
 
@@ -64,6 +79,43 @@ export default {
   }, */
 
   methods: {
+
+    getMainCall: ()=> {
+
+      const vm = this
+
+      vm.$axios.get('https://jsonplaceholder.typicode.com/users').then(response => {
+      vm.arrayOne = response.data;
+
+      const array1 = vm.arrayOne;
+
+      return array1
+
+
+
+
+    /*   this.arrayOne.forEach(function(id) {
+        this.arrayTwo.push(id);
+      }) */
+
+
+
+ /*      this.arrayOne.forEach(function(id) {
+        copyItems.push(id)
+      })
+
+      this.arrayOne = response.data
+      axios.get('/user/12345/' + this.arrayOne.name + '/permissions').then(
+       response => this.arrayTwo = response.data
+     ); */
+
+
+  });
+
+    },
+
+
+
     getUsers() {
 
         return this.$axios
@@ -108,6 +160,10 @@ export default {
 
   }
 
+
+
 }
+
+
 </script>
 
