@@ -169,8 +169,6 @@ export default {
 
         });
 
-
-
         this.randomNumber = _.random(1,10)
 
 
