@@ -34,6 +34,16 @@
 
 </v-snackbar>
 
+<!-- Error API -->
+
+<v-snackbar
+      v-model="errorAPI"
+      :timeout="timeoutAPI"
+    >
+      {{ errorTextAPI }}
+
+</v-snackbar>
+
 
 <h1>Random number</h1>
 {{randomNumber}}
@@ -74,7 +84,10 @@ export default {
       randomNumber: null,
       snackbar: false,
       snackbarText: "Photo API loaded.",
-      timeout: 500
+      errorAPI: false,
+      timeout: 500,
+      timeoutAPI: 5000,
+      errorTextAPI: "API Error"
     }
   }, computed: {
 
@@ -129,6 +142,10 @@ export default {
             })
 
           })
+          .catch((e) => {
+              this.errorAPI = true
+              this.errorTextAPI = e
+          })
     },
 
     // Second API call for Albums
@@ -152,10 +169,15 @@ export default {
 
         });
 
+
+
         this.randomNumber = _.random(1,10)
 
 
 
+      })
+      .catch((e) => {
+        this.errorAPI = true
       })
     },
 
@@ -185,6 +207,9 @@ export default {
 
         this.snackbar = true
 
+      })
+      .catch((e) => {
+        this.errorAPI = true
       })
     }
 
