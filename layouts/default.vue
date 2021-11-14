@@ -134,8 +134,8 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: 'Testing2 sandbox',
-          to: '/testing2'
+          title: 'Sitemap',
+          to: '/sitemap'
         }
       ],
       miniVariant: false,

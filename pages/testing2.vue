@@ -2,6 +2,27 @@
 <div>
 <v-container>
 
+<h1>Possible solution - nested v-for Artist / Albums</h1>
+
+<ul>
+
+  <li v-for="(user, i) in usersArrayPrepared" :key="i">
+    {{user.user_name}}
+
+    <ul>
+
+      <li v-for="(album, j) in RelatedIdsUserAlbum(user['userId'])" :key="j">
+        {{album['album_title']}}
+      </li>
+
+    </ul>
+
+  </li>
+
+</ul>
+
+
+
 <h1>Random number</h1>
 {{randomNumber}}
 
@@ -93,9 +114,13 @@ export default {
     }
   }, computed: {
 
+      RelatedIdsUserAlbum() {
 
+        return id => this.albumsArrayPrepared.filter(album => album.userId === id)
 
-    },
+      }
+
+  },
 
 
   mounted() {
