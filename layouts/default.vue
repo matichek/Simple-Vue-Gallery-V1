@@ -113,22 +113,17 @@ export default {
       switchText: 'Switch to dark',
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome to Gallery',
+          icon: 'mdi-home',
+          title: 'Home',
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        },
-        {
-          icon: 'mdi-apps',
+          icon: 'mdi-table-eye',
           title: 'Dashboard',
           to: '/dashboard'
         },
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-lightbulb',
           title: 'Testing sandbox',
           to: '/testing'
         },
@@ -136,7 +131,12 @@ export default {
           icon: 'mdi-apps',
           title: 'Sitemap',
           to: '/sitemap'
-        }
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Inspire',
+          to: '/inspire'
+        },
       ],
       miniVariant: false,
       right: true,
