@@ -9,11 +9,11 @@
   <li v-for="(user, i) in usersArrayPrepared" :key="i">
     {{user.user_name}}
     <ul>
-      <li style="display: inline-block" v-for="(album, j) in RelatedIdsUserAlbum(user['userId'])" :key="j">
+      <li v-for="(album, j) in RelatedIdsUserAlbum(user['userId'])" :key="j" style="display: inline-block" >
         <strong>Album: {{album['album_title']}}</strong>
 
         <ul style="list-style: none">
-          <li style="float: left;"  v-for="(photo, k) in RelatedPhotosAlbum(user['userId'])" :key="k">
+          <li v-for="(photo, k) in RelatedPhotosAlbum(user['userId'])" :key="k"  style="float: left;">
             <v-img max-width="100" :src="photo['thumb']"></v-img>
           </li>
         </ul>

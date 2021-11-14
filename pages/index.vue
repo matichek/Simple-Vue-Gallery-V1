@@ -89,7 +89,6 @@ export default {
   data() {
     return {
       usersNumber: 0,
-      apiUrl: "https://jsonplaceholder.typicode.com",
       userId: "",
       users: []
     }
