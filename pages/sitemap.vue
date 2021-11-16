@@ -115,7 +115,6 @@ export default {
     await this.getAlbums()
     await this.getPhotos()
 
-
   }, updated() {
 
   },
