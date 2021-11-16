@@ -2,8 +2,6 @@
 
 Why Nuxt.js - to simplify routing, passing SEO info
 
-It uses public testing API for the calls.
-
 WIP (0_1)
 
 TODO: 
@@ -11,6 +9,10 @@ TODO:
 - Album screen - scrolling list of available albums - Album title and some random photo from the album
 - Photo screen - scrolling grid list of photos - titled overlayed
 - Photo screen - single - description on the bottom, details view and close button - details view can be shown or hidden by clicking on the image- (title of the image, album title, name of the user who created it.)
+
+IMPROVEMENTS TODO:
+- Deleting large object when creating/mapping new variables to new object arrays so we are operating with data that we acually need (so we save of RAM space)
+- Error, api calls components
 
 ## Build Setup
 
@@ -79,3 +81,15 @@ More information about the usage of this directory in [the documentation](https:
 This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+
+
+It uses public testing API for the calls.
+
+###Getting all images for the album:
+https://jsonplaceholder.typicode.com/albums/1/photos
+
+###Getting all users:
+https://jsonplaceholder.typicode.com/users/
+
+###Getting all albums
+https://jsonplaceholder.typicode.com/albums/

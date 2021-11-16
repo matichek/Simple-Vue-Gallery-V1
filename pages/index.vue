@@ -19,12 +19,15 @@
         max-width="344"
       >
       testF
-      <p>Image id: {{testF(user['id'])}} {{res2}}</p>
-      <p>Image id: {{testF(user['id'])}} {{res2}}</p>
+      <p>Image id: {{testF(user['id'])}} {{res3}}</p>
+      <p>Image id: {{testF(user['id'])}} {{res3}}</p>
 
       getImage
       <p>Image id: {{getImage(user['id'])}}</p>
       <p>Image id: {{getImage(1)}}</p>
+
+      asyncData2:
+      {{asyncData2(2)}}
 
 
 
@@ -91,7 +94,7 @@ export default {
           const albumData = await $axios.get('https://jsonplaceholder.typicode.com/albums');
           const albums = albumData.data;
 
-          // const photoData = await $axios.get('https://jsonplaceholder.typicode.com/photos', {params: { id: 1 }});
+          // const photoData = await $axios.get('https://jsonplaceholder.typicode.com/albums/'+ albumId +'/photos');
           // const photos = photoData.data;
 
 
@@ -110,12 +113,12 @@ export default {
         error({
           statusCode: 503,
           errorAPI: true,
+          message: 'Unable to fetch API',
           messageError: 'Unable to fetch API.'
         })
       }
 
   },
-
 
   data() {
     return {
@@ -162,6 +165,29 @@ export default {
 
 
 
+  }, created: {
+
+        async getImage2(id, error) {
+
+        try {
+
+            const data = await this.$axios.get('https://jsonplaceholder.typicode.com/albums/'+ id +'/photos');
+
+            return data
+
+      } catch(e) {
+
+          // If API is down
+          error({
+            statusCode: 503,
+            errorAPI: true,
+            message: 'Unable to fetch API',
+            messageError: 'Unable to fetch API.'
+          })
+        }
+
+    },
+
   }, methods: {
 
 
@@ -195,15 +221,21 @@ export default {
 
     async dummyFetch(id) {
 
+      // const data3 = await this.$$axios.get('https://jsonplaceholder.typicode.com/albums/'+ id +'/photos')
+
+      // const data4= data3.data
+
+
+
     },
 
     async testF(albumId) {
 
-      const res = await this.$axios.get('https://jsonplaceholder.typicode.com/albums/'+ albumId +'/photos')
+      const res3 = await this.$axios.get('https://jsonplaceholder.typicode.com/albums/'+ albumId +'/photos')
 
 
 
-      return res
+      return res3
 
     }
 
