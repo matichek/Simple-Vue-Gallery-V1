@@ -3,8 +3,6 @@
 
 <v-container>
 
-<h1>Albums data id</h1>
-{{albumsDataId}}
 
 <h1>Random Array</h1>
 <input v-model="arrayA" type="text">
@@ -34,6 +32,9 @@
 <ul>
   <li v-for="(user,i) in MergedUsersAlbumUrlsArray" :key="i">
     {{user.name}}, {{user.username}}, {{user.randomAlbum}}
+    <ul>
+      <li>{{user.randomAlbumUrls}}</li>
+    </ul>
   </li>
 </ul>
 
@@ -72,7 +73,10 @@ export default {
     const albumsRes = await $axios.get('https://jsonplaceholder.typicode.com/albums')
     const albumsData = albumsRes.data
 
-    return {usersData, albumsData}
+    const photosRes = await $axios.get('https://jsonplaceholder.typicode.com/photos')
+    const photosResData = photosRes.data
+
+    return {usersData, albumsData, photosResData}
   },
 
   // Define all vars, arrays
@@ -111,11 +115,7 @@ export default {
 
     await this.PrepUsersArray()
     await this.PrepNewArrayForUsers()
-   // await this.getArrayOfUrlsFromAlbumId()
-
-    // await this.getArrayOfUrlsFromAlbumId(2)
-    // await this.getArrayOfUrlsFromAlbumId(3)
-
+    await this.PrepPhotosArray()
 
     // TODO Function that remove those big starter objects ??
 
@@ -171,7 +171,7 @@ export default {
               "randomAlbum": this.getRandomValueFromArray(this.getListOfAlbumsBy(obj.userId)),
 
               // We need to populate this after this Prep is done
-              "randomAlbumUrls": []
+              "randomAlbumUrls": this.getListOfUrlsByAlbumId(this.randomB)
 
             }
           })
@@ -184,6 +184,28 @@ export default {
 
       })
 
+    },
+
+    // We are preparing new array with only the values we need for usersData api
+    PrepPhotosArray() {
+
+      return new Promise((resolve, reject) => {
+          this.photosResData = this.photosResData.map(function(item) {
+            return {
+              albumId: item.albumId,
+              id: item.id,
+              url: item.thumbnailUrl
+            }
+          })
+
+          if(!this.error) {
+            resolve()
+          } else {
+            reject(this.errorText)
+            this.errorAPI = true
+          }
+
+      })
     },
 
     // Filter and map results for nested array
@@ -211,31 +233,19 @@ export default {
       return randomA
     },
 
-    getArrayOfUrlsFromAlbumId() {
+    getListOfUrlsByAlbumId(getAlbumId) {
 
-          return new Promise((resolve) => {
+      // Getting specific object filtered by Id
+      const photoListArray = this.photosResData.filter(e => e.albumId === getAlbumId)
 
+      // Retaining only the Ids of the albums
+      const photoListArray2 = photoListArray.map(function(item) {return item.url})
 
-            const albumsRes = this.$axios.get('https://jsonplaceholder.typicode.com/album/1/photos')
-            const albumsDataId = albumsRes.data
-
-            // const albumsData2 = albumsData.map(function(e) { return e.url})
-
-            this.MergedUsersAlbumUrlsArray[0].randomAlbumUrls.push(albumsDataId)
-
-
-
-           resolve()
-
-        }
+      return photoListArray2
+    },
 
 
 
-      )}
-
-
-    // https://jsonplaceholder.typicode.com/albums/1/photos
-    // https://jsonplaceholder.typicode.com/albums/1/photos
   }
 }
 
