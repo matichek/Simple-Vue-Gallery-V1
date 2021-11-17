@@ -3,49 +3,20 @@
 <!--This is Albums by User-->
 
 <div>
+   The id is {{$route.params.albums}}
 
-    <v-container>
+   <h1>Album info</h1>
+    {{MergedUsersAlbumUrlsArray}}
 
-    <v-row>
-      <v-col v-for="(album, i) in MergedUsersAlbumUrlsArray" :key="i" ref="UsersRef" :class="i" xl="2" lg="3" md="4" sm="6">
-        <v-card ref="userRef" :data-key="album.id">
 
-          <a :href="'/albums/album/' + album.id"><v-img :src="album.random_url[0]"></v-img></a>
 
-          <v-card-title class="gal-capitalize">
-            {{album.title}}
-          </v-card-title>
-          <v-card-subtitle>
-            
-          </v-card-subtitle>
 
-          <v-card-actions>
-            <v-btn
-              :to="'/albums/album/' + album.id"
-              color="orange lighten-2"
-              text
-            >
-              View Photos
-          </v-btn>
+   <h1>All the photos</h1>
+   {{photosResData}}
 
-          <v-spacer></v-spacer>
-        </v-card-actions>
 
-        </v-card>
-    </v-col>
-
-    </v-row>
-
-      <!--Error displaying handling for API errors-->
-      <v-snackbar
-            v-model="errorAPI"
-            :timeout="timeoutAPI"
-          >
-            {{ errorText }}
-      </v-snackbar>
-
-    </v-container>
-
+<h1>Albums by ID</h1>
+{{albumsByIdData}}
 </div>
 
 </template>
@@ -73,10 +44,7 @@ export default {
     return {
       MergedUsersAlbumUrlsArray: [],
       albumsByIdData: [],
-      randomPicture: [],
-      errorText: "Error",
-      timeoutAPI: 1000,
-      errorAPI: false
+      randomPicture: []
     }
   },
 

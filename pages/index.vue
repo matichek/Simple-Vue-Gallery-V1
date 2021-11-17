@@ -167,6 +167,7 @@ export default {
             randomAlbum: this.getRandomValueFromArray(
               this.getListOfAlbumsBy(obj.userId)
             ),
+           
 
             // We need to populate this after this Prep is done - this can in improved cause we are getting the whole url object, which is not neccessary.
             // TODO - we have random number of the album - for optimization, we call only specific albums and get only those images
