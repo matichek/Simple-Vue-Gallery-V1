@@ -10,6 +10,7 @@
     <div>
       <a href="/">Home</a>
     </div>
+    
     <v-row>
       <v-col
         v-for="(single, index) in user" :key="index"

@@ -8,7 +8,7 @@
       <v-col v-for="(user, i) in MergedUsersAlbumUrlsArray" :key="i" ref="UsersRef" :class="i" xl="2" lg="3" md="4" sm="6">
         <v-card ref="userRef" :data-key="user.userId">
 
-          <a :href="'/albums/' + user.userId"><v-img :src="user.randomAlbumUrls"></v-img></a>
+          <a :href="'/albums?userId=' + user.userId"><v-img :src="user.randomAlbumUrls"></v-img></a>
 
           <v-card-title>
             {{user.name}}
@@ -19,7 +19,7 @@
 
           <v-card-actions>
             <v-btn
-              :to="'/albums/' + user.userId"
+              :to="'/albums?userId=' + user.id"
               color="orange lighten-2"
               text
             >
