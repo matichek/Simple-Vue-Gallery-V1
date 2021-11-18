@@ -2,75 +2,27 @@
 
 <!--This is Albums by User-->
 
-
 <div>
+  <v-container>
 
-  <h3>Photos for Gallery ID {{$route.params.album}}</h3>
+    <h3>Photos for Gallery ID {{$route.params.album}}</h3>
 
-  <v-row class="gal-photos-row">
-    <v-col
-      v-for="(photo, i) in photosByIdData" :key="i"
-      class="d-flex child-flex"
-      cols="4"
-      xl="3" lg="3" md="4"
-      sm="12"
-      xs="12"
-    >
     <client-only>
-      <vue-picture-swipe :items="[{src: 'https://picsum.photos/200/300', thumbnail: 'https://picsum.photos/200/300', w: 200, h: 300, alt: 'random picture', title: 'Some Picture'}, {src: 'https://picsum.photos/400/300', thumbnail: 'https://picsum.photos/400/300', w: 400, h: 300, alt: 'Another Random Picture', title: 'Another Picture'}]"></vue-picture-swipe>
+      <vue-picture-swipe :items="PrepredPhotos"></vue-picture-swipe>
     </client-only>
-    <!--
-      <v-img
-        :src="photo.url"
-        :lazy-src="photo.thumbnailUrl"
-        aspect-ratio="1"
-        :alt="photo.title"
-        :class="getImageClass(i)"
-
-        @click="onImageClick(i)"
-      >
-      -->
-       <!-- <client-only placeholder="loading...">
-          <expandable-image
-            :src="photo.url"
-          />
-        </client-only>
- -->
-        <template #placeholder>
-          <v-row
-            class="fill-height ma-0"
-            align="center"
-            justify="center"
-          >
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-
-      <!-- </v-img> -->
-
-
-      <div class="gal-v-img-overlayed-title">{{photo.title}}</div>
-    </v-col>
-  </v-row>
-
-
-
+  </v-container>
 </div>
 
 </template>
 
 <script>
 
+
+// Importing modal gallery solution
+
 import Vue from 'vue'
 import VuePictureSwipe from 'vue-picture-swipe'
 Vue.use(VuePictureSwipe)
-
-// import Vue from 'vue'
-// import VueExpandableImage from 'vue-expandable-image'
-// Vue.use(VueExpandableImage)
 
 export default {
 
@@ -80,7 +32,7 @@ export default {
 
   },
 
-      // Nuxt method for data fetching - asyncData
+  // Nuxt method for data fetching - asyncData
 
   async asyncData({ $axios, params }) {
 
@@ -95,9 +47,56 @@ export default {
   data() {
     return {
       alertFired: null,
-      photosByIdData: []
+      photosByIdData: [],
+      PrepedPhotos: []
     }
   },
+
+  head() {
+    return {
+      title: 'Photos by Album',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Simple gallery with Vue/Nuxt/Vuetify. WIP 0_1'
+        }
+      ]
+    }
+  },
+
+  async created() {
+
+    await this.PrepPhotos()
+
+  },
+
+  methods: {
+
+    // Preping photos obejct array to fit into the gallery required format (src, thumbnail, w, h, 'alt' as title)
+
+    PrepPhotos() {
+      return new Promise((resolve) => {
+
+        this.PrepredPhotos = this.photosByIdData.map(function(item) {
+
+          return {
+            src: item.url,
+            thumbnail: item.thumbnailUrl,
+            w: 600,
+            h: 600,
+            alt: item.title
+
+          }
+        })
+
+        resolve()
+
+      })
+
+    }
+
+  }
 
 
 }
