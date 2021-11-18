@@ -11,6 +11,7 @@
       <vue-picture-swipe :items="PrepredPhotos"></vue-picture-swipe>
     </client-only>
   </v-container>
+
 </div>
 
 </template>
@@ -40,6 +41,7 @@ export default {
 
     const res = await $axios.get(`https://jsonplaceholder.typicode.com/albums/${params.album}/photos`)
     const photosByIdData = res.data
+    // const albumId = res.data
 
     return { photosByIdData }
   },
@@ -48,7 +50,8 @@ export default {
     return {
       alertFired: null,
       photosByIdData: [],
-      PrepedPhotos: []
+      PrepedPhotos: [],
+
     }
   },
 
