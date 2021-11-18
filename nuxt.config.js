@@ -1,6 +1,18 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+
+
+  mode: 'universal',
+
+
+  // Our root folder
+
+  router: {
+    base: '/gal/'
+  },
+
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - gallery-nuxt',
@@ -15,7 +27,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'favicon.ico' }
     ]
   },
 
@@ -26,6 +38,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    // { src: '~/plugins/gallery', mode: 'client' }
   ],
 
   loading: {color: 'red'},
@@ -76,5 +89,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vue-picture-swipe']
   }
 }

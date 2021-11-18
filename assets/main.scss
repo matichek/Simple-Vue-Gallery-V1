@@ -1,3 +1,33 @@
 .gal-capitalize {
   text-transform: capitalize !important
 }
+
+.fullWidthImage {
+  width: 600px;
+  height: 600px;
+  display: flex;
+  position: absolute;
+}
+
+.v-card__title {
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+.gal-v-img-overlayed-title {
+  position: absolute;
+  bottom: 10px;
+  padding: 0.5rem;
+  width: 96%;
+  height: auto;
+  z-index: 2;
+  background-color: rgba(0,0,0,0.5);
+  font-size: 0.7rem;
+}
+
+.gal-photos-row {
+    .col-4, .col-xl-3, .col-lg-3 {
+    position: relative;
+  }
+}
+

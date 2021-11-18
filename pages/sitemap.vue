@@ -14,13 +14,12 @@
 
         <ul style="list-style: none">
           <li v-for="(photo, k) in RelatedPhotosAlbum(user['userId'])" :key="k"  style="float: left;">
-            <v-img max-width="100" :src="photo['thumb']"></v-img>
+            <v-img max-width="100" :lazy-src="photo['thumb']" :src="photo['thumb']"></v-img>
           </li>
         </ul>
       </li>
     </ul>
   </li>
-
 </ul>
 
 

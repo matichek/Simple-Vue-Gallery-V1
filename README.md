@@ -5,9 +5,9 @@ Why Nuxt.js - to simplify routing, passing SEO info
 WIP (0_1)
 
 TODO: 
-- Users screen - scolling grid - avaliable users on the system - each cell - Username, name and random photo from their album
-- Album screen - scrolling list of available albums - Album title and some random photo from the album
-- Photo screen - scrolling grid list of photos - titled overlayed
+- (DONE) Users screen - scolling grid - avaliable users on the system - each cell - Username, name and random photo from their album
+- (DONE) Album screen - scrolling list of available albums - Album title and some random photo from the album
+- (DONE) Photo screen - scrolling grid list of photos - titled overlayed
 - Photo screen - single - description on the bottom, details view and close button - details view can be shown or hidden by clicking on the image- (title of the image, album title, name of the user who created it.)
 
 IMPROVEMENTS TODO:
@@ -85,11 +85,14 @@ More information about the usage of this directory in [the documentation](https:
 
 It uses public testing API for the calls.
 
-###Getting all images for the album:
+### Getting all images for the album:
+
 https://jsonplaceholder.typicode.com/albums/1/photos
 
-###Getting all users:
+### Getting all users:
+
 https://jsonplaceholder.typicode.com/users/
 
-###Getting all albums
+### Getting all albums:
+
 https://jsonplaceholder.typicode.com/albums/

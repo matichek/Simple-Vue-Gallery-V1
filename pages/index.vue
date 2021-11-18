@@ -8,7 +8,7 @@
       <v-col v-for="(user, i) in MergedUsersAlbumUrlsArray" :key="i" ref="UsersRef" :class="i" xl="2" lg="3" md="4" sm="6">
         <v-card ref="userRef" :data-key="user.userId">
 
-          <a :href="'/albums/' + user.userId"><v-img :src="user.randomAlbumUrls"></v-img></a>
+          <a :href="'/albums/' + user.userId"><v-img gradient="to bottom right, rgba(100,115,201,.33), rgba(25,32,72,.7)" :src="user.randomAlbumUrls"></v-img></a>
 
           <v-card-title>
             {{user.name}}
@@ -167,7 +167,7 @@ export default {
             randomAlbum: this.getRandomValueFromArray(
               this.getListOfAlbumsBy(obj.userId)
             ),
-           
+
 
             // We need to populate this after this Prep is done - this can in improved cause we are getting the whole url object, which is not neccessary.
             // TODO - we have random number of the album - for optimization, we call only specific albums and get only those images

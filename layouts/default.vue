@@ -102,20 +102,10 @@ export default {
           to: '/dashboard'
         },
         {
-          icon: 'mdi-lightbulb',
-          title: 'Testing sandbox',
-          to: '/testing'
-        },
-        {
           icon: 'mdi-apps',
           title: 'Sitemap',
           to: '/sitemap'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        },
+        }
       ],
       miniVariant: false,
       right: true,

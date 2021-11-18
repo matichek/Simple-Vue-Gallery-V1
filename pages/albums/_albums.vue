@@ -10,13 +10,13 @@
       <v-col v-for="(album, i) in MergedUsersAlbumUrlsArray" :key="i" ref="UsersRef" :class="i" xl="2" lg="3" md="4" sm="6">
         <v-card ref="userRef" :data-key="album.id">
 
-          <a :href="'/albums/album/' + album.id"><v-img :src="album.random_url[0]"></v-img></a>
+          <a :href="'/albums/album/' + album.id"><v-img gradient="to bottom right, rgba(100,115,201,.33), rgba(25,32,72,.7)" :src="album.random_url[0]"></v-img></a>
 
           <v-card-title class="gal-capitalize">
             {{album.title}}
           </v-card-title>
           <v-card-subtitle>
-            
+
           </v-card-subtitle>
 
           <v-card-actions>
@@ -58,10 +58,10 @@ export default {
     // Nuxt method for data fetching - asyncData
 
   async asyncData({ $axios, params }) {
-    
+
     const res = await $axios.get(`https://jsonplaceholder.typicode.com/users/${params.albums}/albums`)
     const albumsByIdData = res.data
-  
+
 
     const photosRes = await $axios.get('https://jsonplaceholder.typicode.com/photos')
     const photosResData = photosRes.data
