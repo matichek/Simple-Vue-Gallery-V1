@@ -8,11 +8,13 @@ TODO:
 - (DONE) Users screen - scolling grid - avaliable users on the system - each cell - Username, name and random photo from their album
 - (DONE) Album screen - scrolling list of available albums - Album title and some random photo from the album
 - (DONE) Photo screen - scrolling grid list of photos - titled overlayed
-- Photo screen - single - description on the bottom, details view and close button - details view can be shown or hidden by clicking on the image- (title of the image, album title, name of the user who created it.)
+- (DONE) Photo screen - single photo gallery, view and close button
 
 IMPROVEMENTS TODO:
-- Deleting large object when creating/mapping new variables to new object arrays so we are operating with data that we acually need (so we save of RAM space)
+- Title of the image, album title, name of the album user, details view can be shown or hidden by clicking on the image- (title of the image, album title, name of the user who created it.)
 - Error, api calls components
+
+Static deployment [DEMO](https://concepts.2gika.si/gal/)
 
 ## Build Setup
 

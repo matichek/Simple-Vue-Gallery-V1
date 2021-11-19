@@ -8,7 +8,7 @@
       <v-col v-for="(user, i) in MergedUsersAlbumUrlsArray" :key="i" ref="UsersRef" :class="i" xl="2" lg="3" md="4" sm="6">
         <v-card ref="userRef" :data-key="user.userId">
 
-          <a :href="'/albums/' + user.userId"><v-img gradient="to bottom right, rgba(100,115,201,.33), rgba(25,32,72,.7)" :src="user.randomAlbumUrls"></v-img></a>
+          <NuxtLink :to="'/albums/' + user.userId"><v-img gradient="to bottom right, rgba(100,115,201,.33), rgba(25,32,72,.7)" :src="user.randomAlbumUrls"></v-img></NuxtLink>
 
           <v-card-title>
             {{user.name}}
