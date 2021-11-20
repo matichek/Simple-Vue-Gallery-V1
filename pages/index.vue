@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import random from 'lodash/random'
 
 // https://www.youtube.com/watch?v=PoRJizFvM7s
 
@@ -222,7 +222,7 @@ export default {
     // Get random value from array
     getRandomValueFromArray(arr) {
       // Random value between first item in the array and last item
-      const randomA = _.random(arr[0], arr[arr.length - 1])
+      const randomA = random(arr[0], arr[arr.length - 1])
 
       // Assined another variable to picking random urls in line 183
       this.randomB = randomA
@@ -243,7 +243,7 @@ export default {
       })
 
       // Picking random url from the array of urls
-      const randomUrl = _.random(photoListArray2)
+      const randomUrl = random(photoListArray2)
       const randomUrl2 = photoListArray2[randomUrl]
 
       return randomUrl2

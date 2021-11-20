@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import random from 'lodash/random'
 
 export default {
 
@@ -144,7 +144,7 @@ export default {
       // Get random value from array
     getRandomValueFromArray(arr) {
       // Random value between first item in the array and last item
-      const randomA = _.random(arr[0], arr[arr.length - 1])
+      const randomA = random(arr[0], arr[arr.length - 1])
 
       // Assined another variable to picking random urls in line 183
       this.randomPicture = randomA
